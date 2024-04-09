@@ -1,5 +1,5 @@
 
-// Huffman.h : Í·ÎÄ¼ş
+// Huffman.h : å¤´æ–‡ä»¶
 //
 
 
@@ -13,7 +13,7 @@
 using namespace std;
 
 
-/*¹ş·òÂü±àÂë*/
+/*å“ˆå¤«æ›¼ç¼–ç */
 class CHuffmanCode
 {
 public:
@@ -156,19 +156,19 @@ private:
 	int m_CodeLen;
 };
 
-/*¹ş·òÂüÊ÷µÄ½Úµã¶¨Òå*/
+/*å“ˆå¤«æ›¼æ ‘çš„èŠ‚ç‚¹å®šä¹‰*/
 template <typename T>
 struct HuffmanNode
 {
     HuffmanNode(T k,HuffmanNode<T>*l=nullptr,HuffmanNode<T>* r=nullptr,HuffmanNode<T>* p=nullptr)
         :key(k), lchild(l), rchild(r), parent(p), code(-1), idx(-1){}
     ~HuffmanNode(){};
-	int idx;					// ´´½¨Ê±½ÚµãË÷Òı, nodesºÍcreate()²ÎÊıa[]ÖĞµÄË÷Òı, ½âÂëÊ±Êä³öÕâ¸öË÷Òı
-	char code;					// ½Úµã¹ş·òÂü±àÂë
-    T key;                      //½ÚµãµÄÈ¨Öµ
-    HuffmanNode<T>* parent;        //¸¸½Úµã
-    HuffmanNode<T>* lchild;        //½Úµã×óº¢
-    HuffmanNode<T>* rchild;        //½ÚµãÓÒº¢
+	int idx;					// åˆ›å»ºæ—¶èŠ‚ç‚¹ç´¢å¼•, nodeså’Œcreate()å‚æ•°a[]ä¸­çš„ç´¢å¼•, è§£ç æ—¶è¾“å‡ºè¿™ä¸ªç´¢å¼•
+	char code;					// èŠ‚ç‚¹å“ˆå¤«æ›¼ç¼–ç 
+    T key;                      //èŠ‚ç‚¹çš„æƒå€¼
+    HuffmanNode<T>* parent;        //çˆ¶èŠ‚ç‚¹
+    HuffmanNode<T>* lchild;        //èŠ‚ç‚¹å·¦å­©
+    HuffmanNode<T>* rchild;        //èŠ‚ç‚¹å³å­©
 };
 
 typedef char*	_CodePtr;
@@ -177,18 +177,18 @@ template <typename T>
 class CHuffman
 {
 public:
-    void preOrder();              //Ç°Ğò±éÀú¹ş·òÂüÊ÷
-    void inOrder();                  //ÖĞĞò±éÀú¹ş·òÂüÊ÷
-    void postOrder();              //ºóĞò±éÀú¹ş·òÂüÊ÷
+    void preOrder();              //å‰åºéå†å“ˆå¤«æ›¼æ ‘
+    void inOrder();                  //ä¸­åºéå†å“ˆå¤«æ›¼æ ‘
+    void postOrder();              //ååºéå†å“ˆå¤«æ›¼æ ‘
  
 	void CanonicCreat(T w[],int size);
-    void creat(T a[], int size);		//´´½¨¹ş·òÂüÊ÷
-    void recreat();						//¸ù¾İ·¶Ê½±àÂëÖØ½¨¹ş·òÂüÊ÷
-    void destroy();						//Ïú»Ù¹ş·òÂüÊ÷
-    void print();						//´òÓ¡¹ş·òÂüÊ÷
-    void printCode();						//´òÓ¡¹ş·òÂüÊ÷
-	bool getCode(int iIndex, char ** ppCode, int * plen);	// Ö¸¶¨Ë÷ÒıµÄ¹ş·ò±àÂë, ·µ»Ø±àÂë³¤¶È
-	bool getCode(int * plen);	// ·µ»Ø±àÂë³¤¶È
+    void creat(T a[], int size);		//åˆ›å»ºå“ˆå¤«æ›¼æ ‘
+    void recreat();						//æ ¹æ®èŒƒå¼ç¼–ç é‡å»ºå“ˆå¤«æ›¼æ ‘
+    void destroy();						//é”€æ¯å“ˆå¤«æ›¼æ ‘
+    void print();						//æ‰“å°å“ˆå¤«æ›¼æ ‘
+    void printCode();						//æ‰“å°å“ˆå¤«æ›¼æ ‘
+	bool getCode(int iIndex, char ** ppCode, int * plen);	// æŒ‡å®šç´¢å¼•çš„å“ˆå¤«ç¼–ç , è¿”å›ç¼–ç é•¿åº¦
+	bool getCode(int * plen);	// è¿”å›ç¼–ç é•¿åº¦
 	void Reset(){ destroy(); }
 	HuffmanNode<T>* GetRoot(){return root;}
 	void ClearCodePtr();
@@ -201,18 +201,18 @@ private:
     void inOrder(HuffmanNode<T>* pnode);
     void postOrder(HuffmanNode<T>*pnode);
     void print(HuffmanNode<T>*pnode);
-	// ·µ»Ø±àÂë³¤¶È
+	// è¿”å›ç¼–ç é•¿åº¦
 	bool getCodeLen();
 	void CanonicCodeByLens(T w[],int sz);
 
 protected:
-	vector<int>	m_vecCodeLens;		// ±àÂë³¤¶È
+	vector<int>	m_vecCodeLens;		// ç¼–ç é•¿åº¦
 	_CodePtr * m_pCodePtr;
  
 private:
-    HuffmanNode<T>* root;			//¹ş·òÂüÊ÷¸ù½Úµã
-    deque<HuffmanNode<T>*> nodes;	//Ò¶×Ó½Úµã
-    deque<HuffmanNode<T>*> forest;	//É­ÁÖ
+    HuffmanNode<T>* root;			//å“ˆå¤«æ›¼æ ‘æ ¹èŠ‚ç‚¹
+    deque<HuffmanNode<T>*> nodes;	//å¶å­èŠ‚ç‚¹
+    deque<HuffmanNode<T>*> forest;	//æ£®æ—
 };
 
 template<typename T>
@@ -237,7 +237,7 @@ void CHuffman<T>::ClearCodePtr()
 }
 
 template<typename T>
-void CHuffman<T>::printCode()						//´òÓ¡¹ş·òÂüÊ÷
+void CHuffman<T>::printCode()						//æ‰“å°å“ˆå¤«æ›¼æ ‘
 {
 	int size = m_vecCodeLens.size();
 
@@ -254,7 +254,7 @@ void CHuffman<T>::printCode()						//´òÓ¡¹ş·òÂüÊ÷
 	}
 }
 
-/*´´½¨¹ş·òÂüÊ÷*/
+/*åˆ›å»ºå“ˆå¤«æ›¼æ ‘*/
 template<typename T>
 CHuffman<T>::CHuffman()
 {
@@ -262,7 +262,7 @@ CHuffman<T>::CHuffman()
 	m_pCodePtr = nullptr;
 }
 
-// ·µ»Ø±àÂë³¤¶È
+// è¿”å›ç¼–ç é•¿åº¦
 template<typename T>
 bool CHuffman<T>::getCodeLen()
 {
@@ -294,7 +294,7 @@ bool CHuffman<T>::getCodeLen()
 template<typename T>
 void CHuffman<T>::CanonicCodeByLens(T w[],int sz)
 {
-	// ±àÂë³¤¶ÈÓëË÷Òı¶ÔÓ¦ÁĞ±í, ²¢°´±àÂë³¤¶ÈÅÅĞò
+	// ç¼–ç é•¿åº¦ä¸ç´¢å¼•å¯¹åº”åˆ—è¡¨, å¹¶æŒ‰ç¼–ç é•¿åº¦æ’åº
 	deque<pair<int, int>>	deqCodeLen;
 
 	int size = m_vecCodeLens.size();
@@ -303,7 +303,7 @@ void CHuffman<T>::CanonicCodeByLens(T w[],int sz)
 	{
 		deqCodeLen.push_back(pair<int,int>(m_vecCodeLens[i], i));
 	}
-	// ÅÅĞò
+	// æ’åº
 	sort(deqCodeLen.begin(), deqCodeLen.end(), [](pair<int,int> & it1, pair<int,int> & it2){return it1.first < it2.first;});
 
 	m_pCodePtr = new _CodePtr[size];
@@ -353,16 +353,16 @@ void CHuffman<T>::CanonicCreat(T w[],int size)
 {
 	creat(w,size);
 
-	// ·µ»Ø±àÂë³¤¶È
+	// è¿”å›ç¼–ç é•¿åº¦
 	getCodeLen();
-	//·¶Ê½±àÂë
+	//èŒƒå¼ç¼–ç 
 	CanonicCodeByLens(w,size);
-	// ·¶Ê½±àÂëÖØ½¨¹ş·òÂüÊ÷
+	// èŒƒå¼ç¼–ç é‡å»ºå“ˆå¤«æ›¼æ ‘
 	destroy();
 	recreat();
 }
 
-//¸ù¾İ±àÂëÖØ½¨¹ş·òÂüÊ÷
+//æ ¹æ®ç¼–ç é‡å»ºå“ˆå¤«æ›¼æ ‘
 template<typename T>
 void CHuffman<T>::recreat()
 {
@@ -428,13 +428,13 @@ void CHuffman<T>::recreat()
 	}
 }
 
-/*´´½¨¹ş·òÂüÊ÷*/
+/*åˆ›å»ºå“ˆå¤«æ›¼æ ‘*/
 template<typename T>
 void CHuffman<T>::creat(T a[],int size)
 {
-    for (int i = 0; i < size; i++) //Ã¿¸ö½Úµã¶¼×÷ÎªÒ»¸öÉ­ÁÖ
+    for (int i = 0; i < size; i++) //æ¯ä¸ªèŠ‚ç‚¹éƒ½ä½œä¸ºä¸€ä¸ªæ£®æ—
     {
-        //Îª³õÊ¼ĞòÁĞµÄÔªËØ¹¹½¨½Úµã¡£Ã¿¸ö½Úµã×÷ÎªÒ»¿ÃÊ÷¼ÓÈëÉ­ÁÖÖĞ¡£
+        //ä¸ºåˆå§‹åºåˆ—çš„å…ƒç´ æ„å»ºèŠ‚ç‚¹ã€‚æ¯ä¸ªèŠ‚ç‚¹ä½œä¸ºä¸€æ£µæ ‘åŠ å…¥æ£®æ—ä¸­ã€‚
         HuffmanNode<T>* ptr = new HuffmanNode<T>(a[i],nullptr,nullptr,nullptr);  
 		ptr->idx = i;
         nodes.push_back(ptr);
@@ -449,7 +449,7 @@ void CHuffman<T>::creat(T a[],int size)
 
     for (int i = 0; i < size - 1; i++)
     {
-        //ÅÅĞò£¬ÒÔÑ¡³ö¸ù½ÚµãÈ¨Öµ×îĞ¡Á½¿ÃÊ÷
+        //æ’åºï¼Œä»¥é€‰å‡ºæ ¹èŠ‚ç‚¹æƒå€¼æœ€å°ä¸¤æ£µæ ‘
 		//for(int i=0; i<forest.size(); i++)
 		//	TRACE("%.1f(l%d, r%d), ", (float)forest[i]->key, (short)forest[i]->lchild, (short)forest[i]->rchild);
 		//TRACE("org\r\n");
@@ -457,41 +457,41 @@ void CHuffman<T>::creat(T a[],int size)
 		//for(int i=0; i<forest.size(); i++)
 		//	TRACE("%.1f(l%d, r%d), ", (float)forest[i]->key, (short)forest[i]->lchild, (short)forest[i]->rchild);
 		//TRACE("sort\r\n");
-        HuffmanNode<T>*node = new HuffmanNode<T>(forest[0]->key + forest[1]->key, forest[0], forest[1]); //¹¹½¨ĞÂ½Úµã
+        HuffmanNode<T>*node = new HuffmanNode<T>(forest[0]->key + forest[1]->key, forest[0], forest[1]); //æ„å»ºæ–°èŠ‚ç‚¹
         forest[0]->parent = node;
         forest[1]->parent = node;
 		forest[0]->code = 0;
 		forest[1]->code = 1;
-		forest.push_back(node);  //ĞÂ½Úµã¼ÓÈëÉ­ÁÖÖĞ
-        forest.pop_front(); //É¾³ıÁ½¿ÃÈ¨Öµ×îĞ¡µÄÊ÷
+		forest.push_back(node);  //æ–°èŠ‚ç‚¹åŠ å…¥æ£®æ—ä¸­
+        forest.pop_front(); //åˆ é™¤ä¸¤æ£µæƒå€¼æœ€å°çš„æ ‘
         forest.pop_front();
     }
     root = forest.front();
     forest.clear();
 }
 
-/*´òÓ¡¹ş·òÂüÊ÷*/
+/*æ‰“å°å“ˆå¤«æ›¼æ ‘*/
 template<typename T>
 void CHuffman<T>::print()
 {
 	print(root);
 }
 
-/*´òÓ¡¹ş·òÂüÊ÷*/
+/*æ‰“å°å“ˆå¤«æ›¼æ ‘*/
 template<typename T>
 void CHuffman<T>::print(HuffmanNode<T>* pnode)
 {
     if (pnode != nullptr)
     {
-		TRACE("µ±Ç°½áµã: %.2f. ", (float)pnode->key);
+		TRACE("å½“å‰ç»“ç‚¹: %.2f. ", (float)pnode->key);
         if (pnode->lchild != nullptr)
-            TRACE("ËüµÄ×óº¢×Ó½ÚµãÎª£º %.2f.", (float)pnode->lchild->key);
+            TRACE("å®ƒçš„å·¦å­©å­èŠ‚ç‚¹ä¸ºï¼š %.2f.", (float)pnode->lchild->key);
         else 
-			TRACE("ËüÃ»ÓĞ×óº¢×Ó.");
+			TRACE("å®ƒæ²¡æœ‰å·¦å­©å­.");
         if (pnode->rchild != nullptr)
-            TRACE("ËüµÄÓÒº¢×Ó½ÚµãÎª£º %.2f.", (float)pnode->rchild->key);
+            TRACE("å®ƒçš„å³å­©å­èŠ‚ç‚¹ä¸ºï¼š %.2f.", (float)pnode->rchild->key);
         else 
-			TRACE("ËüÃ»ÓĞÓÒº¢×Ó.");
+			TRACE("å®ƒæ²¡æœ‰å³å­©å­.");
 		TRACE("\r\n");
 
         print(pnode->lchild);
@@ -499,11 +499,11 @@ void CHuffman<T>::print(HuffmanNode<T>* pnode)
     }
 }
 
-//Ïú»Ù¹ş·òÂüÊ÷
+//é”€æ¯å“ˆå¤«æ›¼æ ‘
 template<typename T>
 void CHuffman<T>::destroy()
 {
-	//½áµã¼¯
+	//ç»“ç‚¹é›†
     deque<HuffmanNode<T>*> nodes; 
 	HuffmanNode<T>*pnode = root;
 
@@ -534,7 +534,7 @@ void CHuffman<T>::destroy()
 	root = nullptr;
 }
 
-// ppCode - Ö¸¶¨Ë÷ÒıµÄ¹ş·ò±àÂë, len - ·µ»Ø±àÂë³¤¶È
+// ppCode - æŒ‡å®šç´¢å¼•çš„å“ˆå¤«ç¼–ç , len - è¿”å›ç¼–ç é•¿åº¦
 template<typename T>
 bool CHuffman<T>::getCode(int iIndex, char ** ppCode, int * plen)
 {
@@ -747,6 +747,27 @@ int CHuffmanCodec<_EL, _WT>::Encode(_EL * pText, int iTextLen, char ** ppOutput,
 	m_pWeights = new _WT[elemnum];
 	m_iElemNum = GetStat(m_pElems, m_pWeights, elemnum);
 
+	TRACE("Elem: ");
+	for(int i=0; i<elemnum; i++)
+	{
+		TRACE("%c, ", m_pElems[i]);
+	}
+	TRACE("\r\n");
+
+	TRACE("Len: ");
+	for(int i=0; i<elemnum; i++)
+	{
+		TRACE("%d, ", m_pWeights[i]);
+	}
+	TRACE("\r\n");
+
+	TRACE("idx: ");
+	for(int i=0; i<elemnum; i++)
+	{
+		TRACE("%d, ", i);
+	}
+	TRACE("\r\n");
+
 	CanonicCreat(m_pWeights, m_iElemNum);
 
 	for(int i=0; i<elemnum; i++)
@@ -766,7 +787,7 @@ int CHuffmanCodec<_EL, _WT>::Encode(_EL * pText, int iTextLen, char ** ppOutput,
 		{
 			//TRACE("%d", m_pCodePtr[i][j]);
 		}
-		//TRACE(" -- char: %c (%d) - cnt: %d ¹ş·òÂü±àÂë.\r\n", m_pElems[i], m_pElems[i], m_pWeights[i]);
+		//TRACE(" -- char: %c (%d) - cnt: %d å“ˆå¤«æ›¼ç¼–ç .\r\n", m_pElems[i], m_pElems[i], m_pWeights[i]);
 	}
 	
 	for(int i=0; i<iTextLen; i++)
@@ -843,112 +864,57 @@ int CHuffmanCodec<_EL, _WT>::Decode(_EL * pText, int iTextLen, char ** ppOutput,
 	return iDeTextLen;
 }
 
-/** // test code
-char g_text[] = 
-"BOOL CHuffmanDemoDlg::OnInitDialog()\r\n"\
-"{\r\n"\
-"	CDialogEx::OnInitDialog();\r\n"\
-"\r\n"\
-"	// ½«¡°¹ØÓÚ...¡±²Ëµ¥ÏîÌí¼Óµ½ÏµÍ³²Ëµ¥ÖĞ¡£\r\n"\
-"\r\n"\
-"	// IDM_ABOUTBOX ±ØĞëÔÚÏµÍ³ÃüÁî·¶Î§ÄÚ¡£\r\n"\
-"	ASSERT((IDM_ABOUTBOX & 0xFFF0) == IDM_ABOUTBOX);\r\n"\
-"	ASSERT(IDM_ABOUTBOX < 0xF000);\r\n"\
-"\r\n"\
-"	CMenu* pSysMenu = GetSystemMenu(FALSE);\r\n"\
-"	if (pSysMenu != NULL)\r\n"\
-"	{\r\n"\
-"		BOOL bNameValid;\r\n"\
-"		CString strAboutMenu;\r\n"\
-"		bNameValid = strAboutMenu.LoadString(IDS_ABOUTBOX);\r\n"\
-"		ASSERT(bNameValid);\r\n"\
-"		if (!strAboutMenu.IsEmpty())\r\n"\
-"		{\r\n"\
-"			pSysMenu->AppendMenu(MF_SEPARATOR);\r\n"\
-"			pSysMenu->AppendMenu(MF_STRING, IDM_ABOUTBOX, strAboutMenu);\r\n"\
-"		}\r\n"\
-"	}\r\n"\
-"\r\n"\
-"	// ÉèÖÃ´Ë¶Ô»°¿òµÄÍ¼±ê¡£µ±Ó¦ÓÃ³ÌĞòÖ÷´°¿Ú²»ÊÇ¶Ô»°¿òÊ±£¬¿ò¼Ü½«×Ô¶¯\r\n"\
-"	//  Ö´ĞĞ´Ë²Ù×÷\r\n"\
-"	SetIcon(m_hIcon, TRUE);			// ÉèÖÃ´óÍ¼±ê\r\n"\
-"	SetIcon(m_hIcon, FALSE);		// ÉèÖÃĞ¡Í¼±ê\r\n"\
-"\r\n"\
-"	// TODO: ÔÚ´ËÌí¼Ó¶îÍâµÄ³õÊ¼»¯´úÂë\r\n"\
-"\r\n"\
-"	return TRUE;  // ³ı·Ç½«½¹µãÉèÖÃµ½¿Ø¼ş£¬·ñÔò·µ»Ø TRUE\r\n"\
-"}\r\n";
-
-
-
+/** 
+// test code
+char g_text[] = "ADFHFAAAAHFGKKKKJJJJJJJJJJEEvkwwuuuuu";
 
 void CHuffmanDemoDlg::OnBnClickedButton1()
 {
-	// TODO: ÔÚ´ËÌí¼Ó¿Ø¼şÍ¨Öª´¦Àí³ÌĞò´úÂë
-/**	CElemStat<char> elemstat;
-	int textlen = strlen(g_text);
-	int elemnum = elemstat.Stat(g_text, strlen(g_text));
-
-	char pElems[130];
-	int  pCnts[130];
-	int elemnum_ = elemstat.GetStat(pElems, pCnts, 130);
-
-	for(int i=0; i<elemnum_; i++)
-	{
-		TRACE("%d: %c (%u) - %d\r\n", i+1, pElems[i], (BYTE)pElems[i], pCnts[i]);
-	}
-	
-/**    CHuffman<int> huff;
-    // int a[] = { 10,20,30,40,5,15 };
-    // huff.CanonicCreat(a, 6);    //¹¹½¨Ò»¿Ã¹ş·òÂüÊ÷
-    //int a[] = { 10,20,30,40,5,15 };
-    //huff.creat(pCnts, elemnum_);    //¹¹½¨Ò»¿Ã¹ş·òÂüÊ÷
-    huff.CanonicCreat(pCnts, elemnum_);    //¹¹½¨Ò»¿Ã¹ş·òÂüÊ÷
-    //huff.print();        //´òÓ¡½Úµã¼ä¹ØÏµ
-	huff.printCode();
-	char * pcode = nullptr;
-	int codelen = 0;
-	for(int j=0;j<elemnum_;j++)
-	{
-		bool bret = huff.getCode(j, &pcode, &codelen);
-		for(int i=0; i<codelen; i++)
-		{
-			TRACE("%d", pcode[i]);
-		}
-		TRACE(" -- char: %c (%d) - cnt: %d ¹ş·òÂü±àÂë.\r\n", pElems[j], pElems[j], pCnts[j]);
-
-		if(pcode != nullptr)
-		{
-			delete[] pcode;
-			pcode = nullptr;
-		}
-	}
-	huff.destroy();
-	huff.ClearCodePtr();
-	**
-	
+	// TODO: åœ¨æ­¤æ·»åŠ æ§ä»¶é€šçŸ¥å¤„ç†ç¨‹åºä»£ç 
+	TRACE("text:%s\r\n", g_text); 
 	CHuffmanCodec<char, int> hfmCodec;
 	char * pOutput;
 	int iOutputLen;
 	int textlen = strlen(g_text);
 	int len = hfmCodec.Encode(g_text, textlen, &pOutput, &iOutputLen);
+	TRACE("encode:");
 	for(int i=0; i<iOutputLen; i++)
 	{
 		TRACE("%d", pOutput[i]);
 		if((1+i)%130==0)
-	TRACE("\r\n");
+			TRACE("\r\n");
 	}
 
-	TRACE("\r\n");
-	pOutput[14] = '\0';
+	TRACE("\r\ntext bit count: %d, after encoding:%d \r\n", textlen * 8, iOutputLen);
 
 	char * pText;// = new char[1];
 	int iTextLen;
 	int len2 = hfmCodec.Decode(pOutput, iOutputLen, &pText, &iTextLen);
-	TRACE("%s\r\n", pText);
+	TRACE("decode:%s\r\n", pText);
 
 	delete[] pOutput;
 	delete[] pText;
 	
 }
+
+debugging output:
+text:ADFHFAAAAHFGKKKKJJJJJJJJJJEEvkwwuuuuu
+Elem: A, D, E, F, G, H, J, K, k, u, v, w, 
+Len: 5, 1, 2, 3, 1, 2, 10, 4, 1, 5, 1, 2, 
+idx: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 
+00 -- idx:6, cnt:10, code len:2, id:0 - huffman code
+010 -- idx:0, cnt:5, code len:3, id:1 - huffman code
+011 -- idx:7, cnt:4, code len:3, id:2 - huffman code
+100 -- idx:9, cnt:5, code len:3, id:3 - huffman code
+1010 -- idx:2, cnt:2, code len:4, id:4 - huffman code
+1011 -- idx:3, cnt:3, code len:4, id:5 - huffman code
+1100 -- idx:5, cnt:2, code len:4, id:6 - huffman code
+1101 -- idx:11, cnt:2, code len:4, id:7 - huffman code
+11100 -- idx:1, cnt:1, code len:5, id:8 - huffman code
+11101 -- idx:4, cnt:1, code len:5, id:9 - huffman code
+11110 -- idx:8, cnt:1, code len:5, id:10 - huffman code
+11111 -- idx:10, cnt:1, code len:5, id:11 - huffman code
+encode:0101110010111100101101001001001011001011111010110110110110000000000000000000010101010111111111011011101100100100100100
+text bit count: 296, after encoding:118 
+decode:ADFHFAAAAHFGKKKKJJJJJJJJJJEEvkwwuuuuu
 **/
